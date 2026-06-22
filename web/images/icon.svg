@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220" role="img">
+<title>Metis Antique Marketplace Plus Icon</title>
+<desc>Treasure chest icon for Metis Antique Marketplace Plus</desc>
+
+<rect width="200" height="220" rx="24" fill="#140c00"/>
+
+<!-- lid glow -->
+<path d="M28,90 Q28,36 100,36 Q172,36 172,90" fill="#FFB300" opacity=".05"/>
+<!-- lid arc -->
+<path d="M28,90 Q28,36 100,36 Q172,36 172,90" fill="none" stroke="#F57F17" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- lid horizontal band -->
+<path d="M28,68 Q100,78 172,68" fill="none" stroke="#F57F17" stroke-width="1.5" opacity=".4"/>
+<!-- lid straps -->
+<line x1="58" y1="36" x2="58" y2="166" stroke="#F57F17" stroke-width="2"/>
+<line x1="142" y1="36" x2="142" y2="166" stroke="#F57F17" stroke-width="2"/>
+<!-- chest body -->
+<rect x="28" y="90" width="144" height="76" rx="8" fill="none" stroke="#F57F17" stroke-width="3.5"/>
+<!-- wood plank lines on body -->
+<line x1="28" y1="116" x2="172" y2="116" stroke="#F57F17" stroke-width="1.2" opacity=".25"/>
+<line x1="28" y1="140" x2="172" y2="140" stroke="#F57F17" stroke-width="1.2" opacity=".25"/>
+<!-- lock body -->
+<rect x="76" y="108" width="48" height="30" rx="6" fill="none" stroke="#FFB300" stroke-width="2.5"/>
+<!-- lock shackle -->
+<path d="M82,108 Q82,88 100,88 Q118,88 118,108" fill="none" stroke="#FFB300" stroke-width="2.5"/>
+<!-- keyhole -->
+<circle cx="100" cy="120" r="5" fill="none" stroke="#FFB300" stroke-width="2"/>
+<line x1="100" y1="125" x2="100" y2="133" stroke="#FFB300" stroke-width="2" stroke-linecap="round"/>
+<!-- corner rivets -->
+<circle cx="36" cy="100" r="5" fill="#FFB300"/>
+<circle cx="164" cy="100" r="5" fill="#FFB300"/>
+<circle cx="36" cy="158" r="5" fill="#FFB300"/>
+<circle cx="164" cy="158" r="5" fill="#FFB300"/>
+<!-- strap rivets on lid -->
+<circle cx="58" cy="50" r="3.5" fill="#FFB300"/>
+<circle cx="142" cy="50" r="3.5" fill="#FFB300"/>
+
+<!-- wordmark below icon -->
+<text x="100" y="196" font-family="Georgia,serif" font-size="8" font-weight="400" fill="#999" text-anchor="middle" letter-spacing="4">METIS</text>
+<text x="100" y="213" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#F57F17" text-anchor="middle" letter-spacing="0.5">Antique Marketplace Plus</text>
+</svg>

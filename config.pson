@@ -1,0 +1,222 @@
+server {
+    host       = "0.0.0.0"
+    port       = 8480
+    tls_port   = 8481
+    cert_file  = "certs/server.crt"
+    key_file   = "certs/server.key"
+    web_root   = "web"
+    log_dir    = "logs"
+    log_max_mb = 10
+}
+
+auth {
+    enabled                  = true
+    session_hours            = 8
+    bcrypt_cost              = 12
+    rate_limit_max_attempts  = 5
+    rate_limit_window_sec    = 60
+
+    admin_user    = "admin"
+    admin_pass    = "Antique#2026"
+
+    dealer_user   = "dealer"
+    dealer_pass   = "Dealer#2026"
+
+    viewer_user   = "viewer"
+    viewer_pass   = "Viewer#2026"
+}
+
+database {
+    path = "data/antique.db"
+}
+
+app {
+    name              = "Metis Antique Marketplace Plus"
+    version           = "1.2.48"
+
+    # Currency settings -- symbol, ISO 4217 code, and BCP 47 locale
+    # Used by the browser to format all monetary values via Intl.NumberFormat.
+    # Common examples:
+    #   USD  $   en-US     US Dollar
+    #   EUR  EUR eu-DE     Euro (German)
+    #   GBP  GBP en-GB     British Pound
+    #   CAD  $   en-CA     Canadian Dollar
+    #   AUD  $   en-AU     Australian Dollar
+    #   JPY  JPY ja-JP     Japanese Yen
+    #   CHF  CHF de-CH     Swiss Franc
+    #   MXN  $   es-MX     Mexican Peso
+    #   BRL  R$  pt-BR     Brazilian Real
+    #   INR  INR en-IN     Indian Rupee
+    #   CNY  CNY zh-CN     Chinese Yuan
+    #   HKD  $   zh-HK     Hong Kong Dollar
+    #   SEK  kr  sv-SE     Swedish Krona
+    #   NOK  kr  nb-NO     Norwegian Krone
+    #   DKK  kr  da-DK     Danish Krone
+    currency          = "USD"
+    currency_symbol   = "$"
+    currency_code     = "USD"
+    currency_locale   = "en-US"
+
+    items_per_page    = 20
+    photos_dir        = "photos"
+    backup_dir        = "backups"
+    backup_keep       = 7
+    backup_hour       = 2
+}
+
+email {
+    enabled      = false
+    smtp_host    = "smtp.gmail.com"
+    smtp_port    = 587
+    smtp_user    = ""
+    smtp_pass    = ""
+    from_address = ""
+    from_name    = "Metis Antique Marketplace"
+}
+
+cc_fees {
+    # Processor rate defaults used by GET /api/cc-fees/calculate
+    # Format: <processor>_pct and <processor>_flat
+    # Add your own processors using the same pattern.
+    stripe_pct        = 2.9
+    stripe_flat       = 0.30
+    square_pct        = 2.6
+    square_flat       = 0.10
+    paypal_pct        = 3.49
+    paypal_flat       = 0.49
+    venmo_pct         = 1.9
+    venmo_flat        = 0.10
+    cash_pct          = 0.0
+    cash_flat         = 0.0
+    check_pct         = 0.0
+    check_flat        = 0.0
+}
+
+settlements {
+    enabled     = false      # set true to enable nightly settlement checks
+    grace_days  = 7          # days after sale before settlement is generated
+    check_hour  = 3          # hour (0-23) to run settlement check
+}
+
+sku {
+    prefix      = "AMP"      # prefix for auto-generated SKUs (AMP-2026-00042)
+}
+
+booth_rent {
+    # Automated rent collection and discount rules
+    # All monetary values in the app currency (config.pson app.currency)
+
+    collection_enabled  = false   # set true to enable automated invoice generation
+    collection_hour     = 8       # hour to run daily collection check
+    invoice_day         = 1       # day of month to generate rent invoices
+    due_day             = 5       # day of month rent is due
+    grace_days          = 5       # days after due_day before late fee applies
+
+    # Early payment discount: applied if paid before discount_before_day
+    early_pay_discount_pct   = 5.0
+    early_pay_before_day     = 3      # paid before 3rd of month = 5% off
+
+    # Loyalty discount: applied after loyalty_months consecutive payments
+    loyalty_discount_pct     = 10.0
+    loyalty_months           = 12
+
+    # Multi-booth discount: applied when vendor has >= multi_booth_count booths
+    multi_booth_discount_pct = 7.5
+    multi_booth_count        = 3
+
+    # Late fee: applied after grace period
+    late_fee_pct             = 5.0   # 5% of monthly_rate
+
+    # Email reminders
+    send_invoice_email       = false  # email invoice on generation
+    send_reminder_email      = false  # email reminder 2 days before due
+    send_overdue_email       = false  # email overdue notice after grace period
+}
+
+pos {
+    # POS hardware integration
+    enabled             = false
+    receipt_printer_ip  = "192.168.1.100"   # ESC/POS network printer IP
+    receipt_printer_port= 9100              # standard ESC/POS port
+    receipt_printer_type= "network"         # network | usb_serial | none
+    cash_drawer_enabled = false             # trigger via receipt printer pulse
+    receipt_header      = "Metis Antique Marketplace"
+    receipt_footer      = "Thank you for your purchase!"
+    receipt_show_logo   = false
+    barcode_scanner_enabled = true          # HID keyboard wedge (browser-native)
+}
+
+sync {
+    # Platform listing sync -- set enabled=true per channel and add credentials
+    # Changes take effect on restart.
+
+    ebay {
+        enabled         = false
+        client_id       = ""
+        client_secret   = ""
+        refresh_token   = ""
+        sandbox         = true      # set false for production
+        sync_interval_min = 30      # how often to poll for updates
+        auto_mark_sold  = true      # auto-record sale when eBay order received
+    }
+
+    etsy {
+        enabled         = false
+        api_key         = ""
+        api_secret      = ""
+        access_token    = ""
+        shop_id         = ""
+        sync_interval_min = 30
+        auto_mark_sold  = true
+    }
+
+    chairish {
+        enabled         = false
+        api_key         = ""
+        sync_interval_min = 60
+        auto_mark_sold  = true
+    }
+
+    onedibs {
+        enabled         = false
+        api_key         = ""
+        dealer_id       = ""
+        sync_interval_min = 60
+        auto_mark_sold  = false     # 1stDibs requires manual sale confirmation
+    }
+}
+
+# Platform API endpoints (override for sandbox or custom domains)
+sync_hosts {
+    ebay_sandbox    = "api.sandbox.ebay.com"
+    ebay_production = "api.ebay.com"
+    etsy            = "openapi.etsy.com"
+    onedibs         = "api.1stdibs.com"
+    chairish        = "api.chairish.com"
+}
+
+# ---------------------------------------------------------------------------
+# Future compute infrastructure (planned C++20 implementation)
+# GPU, Kubernetes, and Container support will be implemented in native C++20
+# for Windows, Linux, and macOS -- no Docker, no external orchestration tools.
+# ---------------------------------------------------------------------------
+compute {
+    # GPU acceleration (planned)
+    # Enables GPU-accelerated image processing and analytics pipelines.
+    # Backend: CUDA (NVIDIA) or OpenCL (cross-platform) via native C++20.
+    gpu_enabled         = false
+    gpu_backend         = "opencl"     # opencl | cuda | none
+    gpu_device_index    = 0            # 0 = first available device
+
+    # Kubernetes-style workload orchestration (planned)
+    # Native C++20 orchestration layer for multi-node deployments.
+    kubernetes_enabled  = false
+    kubernetes_api_host = "localhost"
+    kubernetes_api_port = 6443
+    kubernetes_namespace= "metis"
+
+    # Container runtime integration (planned)
+    # Native C++20 OCI-compatible container management (no Docker required).
+    containers_enabled  = false
+    container_runtime   = "none"       # none | oci | custom
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metis Antique Marketplace Plus</title>
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="images/logo.svg" alt="Metis Antique Marketplace Plus" class="login-logo-img">
+    </div>
+    <div id="login-err" class="login-err hidden"></div>
+    <input type="text" id="l-user" placeholder="Username" autocomplete="username">
+    <input type="password" id="l-pass" placeholder="Password" autocomplete="current-password">
+    <button id="l-btn" onclick="app.login()">Sign in</button>
+  </div>
+</div>
+
+<div id="app-screen" class="app-screen hidden">
+  <!-- Mobile top bar (hidden on desktop via CSS) -->
+  <div class="mobile-topbar">
+    <button id="hamburger" onclick="MobileNav.toggle()" aria-label="Menu">&#x2630;</button>
+    <img src="images/logo.svg" alt="Metis Antique Marketplace Plus" class="nav-logo-img">
+    <button class="pill pill-theme" onclick="app.toggleTheme()" title="Toggle light/dark mode" id="theme-btn" style="margin-left:auto">&#x263C; Light</button>
+  </div>
+  <div id="sidebar-overlay" onclick="MobileNav.close()"></div>
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-header-top">
+        <img src="images/icon.svg" alt="" class="sidebar-icon-img">
+        <span class="logo-text" id="sidebar-app-name">Antique Marketplace Plus</span>
+      </div>
+      <button class="pill pill-theme" onclick="app.toggleTheme()" title="Toggle light/dark mode" id="theme-btn-sidebar">&#x263C; Light</button>
+    </div>
+    <!-- TLS / cipher badges -->
+    <div class="tls-badges hidden" id="tls-badges">
+      <span class="tls-badge tls-badge-version" id="badge-tls-ver"></span>
+      <span class="tls-badge tls-badge-cipher" id="badge-tls-cipher"></span>
+      <span class="tls-badge tls-badge-pq hidden" id="badge-pq">Post-Quantum TLS</span>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-section-label">Overview</li>
+      <li class="nav-item active" data-page="dashboard" onclick="app.nav('dashboard')">&#x1F4CA; Dashboard</li>
+      <li class="nav-item dealer-only hidden" data-page="dealer-dashboard" onclick="app.nav('dealer-dashboard')">&#x1F464; My Dashboard</li>
+      <li class="nav-section-label">Inventory</li>
+      <li class="nav-item" data-page="inventory"  onclick="app.nav('inventory')">&#x1F4E6; Inventory</li>
+      <li class="nav-item"        data-page="purchases"  onclick="app.nav('purchases')">&#x1F6CD; Purchases</li>
+      <li class="nav-item"        data-page="listings"   onclick="app.nav('listings')">&#x1F4CB; Listings</li>
+      <li class="nav-section-label">Finance</li>
+      <li class="nav-item"        data-page="sales"      onclick="app.nav('sales')">&#x1F4B0; Sales</li>
+      <li class="nav-item"        data-page="expenses"   onclick="app.nav('expenses')">&#x1F4B8; Expenses</li>
+      <li class="nav-item"        data-page="pnl"        onclick="app.nav('pnl')">&#x1F4CA; P&amp;L</li>
+      <li class="nav-section-label">Business</li>
+      <li class="nav-item" data-page="consignments" onclick="app.nav('consignments')">&#x1F91D; Consignments</li>
+      <li class="nav-item" data-page="rentals"      onclick="app.nav('rentals')">&#x1F3E0; Rentals</li>
+      <li class="nav-item" data-page="advertising"  onclick="app.nav('advertising')">&#x1F4E3; Advertising</li>
+      <li class="nav-item" data-page="ccfees"       onclick="app.nav('ccfees')">&#x1F4B3; CC Fees</li>
+      <li class="nav-item admin-only hidden" data-page="settlements" onclick="app.nav('settlements')">&#x1F4CB; Settlements</li>
+      <li class="nav-item admin-only hidden" data-page="pos"         onclick="app.nav('pos')">&#x1F5A8; POS &amp; Sync</li>
+      <li class="nav-section-label">Operations</li>
+      <li class="nav-item"        data-page="appraisals" onclick="app.nav('appraisals')">&#x1F50D; Appraisals</li>
+      <li class="nav-item"        data-page="market"     onclick="app.nav('market')">&#x1F4C8; Market</li>
+      <li class="nav-item"        data-page="portfolio"  onclick="app.nav('portfolio')">&#x1F4BC; Portfolio</li>
+      <li class="nav-item"        data-page="inquiries"  onclick="app.nav('inquiries')">&#x1F4AC; Inquiries <span id="inq-badge" class="badge badge-amber" style="display:none"></span></li>
+      <li class="nav-item admin-only hidden" data-page="users" onclick="app.nav('users')">&#x1F465; Users</li>
+      <li class="nav-item admin-only hidden" data-page="audit" onclick="app.nav('audit')">&#x1F6E1; Audit &amp; Logs</li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="nav-user-block">
+        <span id="nav-user" class="nav-user"></span>
+        <span id="nav-role" class="nav-role"></span>
+      </div>
+      <div class="toolbar-row">
+        <button class="toolbar-btn" id="btn-font-decrease" title="Decrease font size">A<sup>-</sup></button>
+        <button class="toolbar-btn" id="btn-font-reset"    title="Reset font size">A</button>
+        <button class="toolbar-btn" id="btn-font-increase" title="Increase font size">A<sup>+</sup></button>
+        <select class="lang-select" id="lang-select" title="Language"></select>
+      </div>
+      <button class="btn-sm" onclick="app.openChangePassword()" data-i18n="btn_change_pw">Change password</button>
+      <div class="sidebar-action-pills">
+        <button class="pill pill-signout" onclick="app.logout()" title="Sign out of Metis Antique Marketplace Plus">&#x23FB; Sign out</button>
+        <button class="pill pill-shutdown admin-only hidden" onclick="app.shutdownServer()" title="Shut down the server process">&#x26D4; Shutdown</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div id="page-dashboard" class="page"></div>
+    <div id="page-inventory"  class="page hidden"></div>
+    <div id="page-purchases"  class="page hidden"></div>
+    <div id="page-listings"   class="page hidden"></div>
+    <div id="page-sales"      class="page hidden"></div>
+    <div id="page-expenses"   class="page hidden"></div>
+    <div id="page-pnl"        class="page hidden"></div>
+    <div id="page-appraisals" class="page hidden"></div>
+    <div id="page-market"     class="page hidden"></div>
+    <div id="page-portfolio"  class="page hidden"></div>
+    <div id="page-inquiries"  class="page hidden"></div>
+    <div id="page-users"      class="page hidden"></div>
+    <div id="page-audit"         class="page hidden"></div>
+    <div id="page-consignments"  class="page hidden"></div>
+    <div id="page-rentals"       class="page hidden"></div>
+    <div id="page-advertising"   class="page hidden"></div>
+    <div id="page-ccfees"        class="page hidden"></div>
+    <div id="page-dealer-dashboard" class="page hidden"></div>
+    <div id="page-settlements"   class="page hidden"></div>
+    <div id="page-pos"           class="page hidden"></div>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-backdrop" onclick="app.closeModal()"></div>
+  <div class="modal-box" style="width:720px">
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <button class="modal-close" onclick="app.closeModal()">&#x2715;</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const MobileNav = {
+    toggle() {
+        const sb = document.querySelector('.sidebar');
+        const ov = document.getElementById('sidebar-overlay');
+        const open = sb.classList.toggle('open');
+        if (ov) ov.classList.toggle('visible', open);
+    },
+    close() {
+        document.querySelector('.sidebar')?.classList.remove('open');
+        document.getElementById('sidebar-overlay')?.classList.remove('visible');
+    }
+};
+// Close sidebar when a nav item is clicked on mobile
+document.addEventListener('click', e => {
+    if (e.target.closest('.nav-item') && window.innerWidth <= 768) MobileNav.close();
+});
+</script>
+<script src="js/i18n.js"></script>
+<script src="js/api.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/pages/dashboard.js"></script>
+<script src="js/barcode.js"></script>
+<script src="js/pages/business.js"></script>
+<script src="js/pages/dealer.js"></script>
+<script src="js/pages/pos.js"></script>
+<script src="js/pages/gallery.js"></script>
+<script src="js/pages/comments.js"></script>
+<script src="js/pages/audit.js"></script>
+<script src="js/pages/purchases.js"></script>
+<script src="js/pages/qr.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
