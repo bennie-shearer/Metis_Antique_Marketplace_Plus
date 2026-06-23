@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Data Model
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 SQLite 3.53.1. WAL journal mode. Foreign keys ON. All timestamps UTC ISO 8601.
 

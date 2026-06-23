@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Build Guide
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 C++20 / CMake / Ninja -- Windows, Linux, macOS
 

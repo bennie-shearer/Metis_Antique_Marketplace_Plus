@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Implementation Plan
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Roadmap and phased delivery plan for future capabilities.
 All implementations target C++20 on Windows, Linux, and macOS.

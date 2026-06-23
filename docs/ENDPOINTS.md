@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Endpoint Quick Reference
 
-**Version 1.2.48** | 121 endpoints across 16 modules
+**Version 1.2.50** | 121 endpoints across 16 modules
 
 Authorization: `Authorization: Bearer <token>` on all endpoints except
 POST /api/auth/login and GET /api/config.

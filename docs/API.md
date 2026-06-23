@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- API Reference
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Base URL: `http://localhost:8480` (HTTP) or `https://localhost:8481` (HTTPS).
 

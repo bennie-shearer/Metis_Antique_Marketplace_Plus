@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Comparison
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 How Metis Antique Marketplace Plus compares to common alternatives.
 

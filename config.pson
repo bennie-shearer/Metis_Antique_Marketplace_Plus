@@ -32,7 +32,7 @@ database {
 
 app {
     name              = "Metis Antique Marketplace Plus"
-    version           = "1.2.48"
+    version           = "1.2.50"
 
     # Currency settings -- symbol, ISO 4217 code, and BCP 47 locale
     # Used by the browser to format all monetary values via Intl.NumberFormat.

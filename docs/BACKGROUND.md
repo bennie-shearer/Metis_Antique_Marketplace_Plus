@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Background
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 ---
 

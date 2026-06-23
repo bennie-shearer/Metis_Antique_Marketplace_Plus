@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Configuration Reference
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 All operational parameters are in `config.pson`. No hardcoded operational
 values exist in source. Changes take effect on server restart unless noted.

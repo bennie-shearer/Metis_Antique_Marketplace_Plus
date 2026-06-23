@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Database Reference
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Engine: SQLite 3.53.1 amalgamation (bundled in third_party/sqlite/).
 Path: exe-relative `data/antique.db` (created automatically on first run).

@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.2.50 (2026-06-22)
+
+### Add Niels Lohmann acknowledgment
+
+README.md Acknowledgments table: added Niels Lohmann -- JSON for Modern C++
+(https://github.com/nlohmann/json), SPDX-FileCopyrightText 2013-2026.
+json.hpp 3.12.0 is bundled in third_party/json/ and used throughout
+the server for JSON parsing.
+Files changed: README.md
+
+## v1.2.49 (2026-06-22)
+
+### Remove location from author attribution
+
+README.md: changed author line from
+"Bennie Shearer (Retired) -- Coeur d'Alene, Idaho" to
+"Bennie Shearer (Retired)".
+Files changed: README.md
+
 ## v1.2.48 (2026-06-22)
 
 ### Full documentation suite, PSON compute block, GPU/Kubernetes/Container stubs

@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Billing Reference
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Financial calculations, fee structures, and revenue reporting.
 

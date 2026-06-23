@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Professional antique inventory, marketplace, and operations platform.
 Zero-dependency C++20 HTTP server with a vanilla-JS browser client.
@@ -196,7 +196,7 @@ Copyright (c) 2026 Bennie Shearer (Retired)
 
 ## Author
 
-Bennie Shearer (Retired) -- Coeur d'Alene, Idaho
+Bennie Shearer (Retired)
 
 ## Acknowledgments
 
@@ -207,6 +207,7 @@ Bennie Shearer (Retired) -- Coeur d'Alene, Idaho
 | Claude by Anthropic PBC       | https://www.anthropic.com/           |
 | OpenSSL Project               | https://www.openssl.org/             |
 | SQLite                        | https://sqlite.org/                  |
+| Niels Lohmann -- JSON for Modern C++ | https://github.com/nlohmann/json |
 
 ---
 

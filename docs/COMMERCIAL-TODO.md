@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Commercial TODO
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Features and capabilities identified for future commercial release.
 Items are grouped by category and ordered by estimated implementation priority.

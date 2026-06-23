@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Support Resources
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 External organizations and resources for antique dealers, collectors,
 appraisers, and shop operators.

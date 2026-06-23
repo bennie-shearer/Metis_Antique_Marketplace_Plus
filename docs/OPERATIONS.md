@@ -1,6 +1,6 @@
 # Metis Antique Marketplace Plus -- Operations Guide
 
-**Version 1.2.48**
+**Version 1.2.50**
 
 Installation, startup, configuration, remote access, and email setup.
 
